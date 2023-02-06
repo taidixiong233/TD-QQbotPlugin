@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<body>
+    <div>
+        <div style="margin-left: 85px;">
+            <span>积分排行</span>
+        </div>
+
+        <div style="margin: 0 auto;text-align:center">
+            <table>
+                <tr>
+                    <td>名次</td>
+                    <td>QQ号</td>
+                    <td>积分数</td>
+                </tr>
+                <tr>
+                    <td>①</td>
+                    <td id="uin1"></td>
+                    <td id="score1"></td>
+                </tr>
+                <tr>
+                    <td>②</td>
+                    <td id="uin2"></td>
+                    <td id="score2"></td>
+                </tr>
+                <tr>
+                    <td>③</td>
+                    <td id="uin3"></td>
+                    <td id="score3"></td>
+                </tr>
+                <tr>
+                    <td>④</td>
+                    <td id="uin4"></td>
+                    <td id="score4"></td>
+                </tr>
+                <tr>
+                    <td>⑤</td>
+                    <td id="uin5"></td>
+                    <td id="score5"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="time">
+            <span id="time"></span>
+        </div>
+
+    </div>
+    <script>
+        const getTime_format = (timestamp = new Date().getTime(),
+            type = 'YYYY-MM-DD HH:mm:ss') => {
+            let time = new Date(timestamp)
+            let month = '', date = '', hour = '', minutes = '', seconds = '', milliseconds = ''
+
+            if ((time.getMonth() + 1) < 10) month = '0' + String(time.getMonth() + 1)
+            else month = String(time.getMonth() + 1)
+
+            if (time.getDate() < 10) date = '0' + String(time.getDate())
+            else date = String(time.getDate())
+
+            if (time.getHours() < 10) hour = '0' + String(time.getHours())
+            else hour = String(time.getHours())
+
+            if (time.getMinutes() < 10) minutes = '0' + String(time.getMinutes())
+            else minutes = String(time.getMinutes())
+
+            if (time.getSeconds() < 10) seconds = '0' + String(time.getSeconds())
+            else seconds = String(time.getSeconds())
+
+            if (time.getMilliseconds() < 10) milliseconds = '00' + String(time.getMilliseconds())
+            else if (time.getMilliseconds() < 100) milliseconds = '0' + String(time.getMilliseconds())
+            else milliseconds = String(time.getMilliseconds())
+
+            switch (type) {
+                case 'YYYY-MM-DD HH:mm:ss':
+                    return time.getFullYear() + '-' + month + '-' + date+ ' ' + hour + ':' + minutes + ':' + seconds
+                case 'YYYY-MM-DDTHH:mm:ss:mmm':
+                    return time.getFullYear() + '-' + month + '-' + date+ ' ' + hour + ':' + minutes + ':' + seconds + ':' + milliseconds
+                case 'YYYY-MM-DD':
+                    return time.getFullYear() + '-' + month + '-' + date
+            }
+        }
+
+        const data = [
+            {
+                "uin": "2870926164",
+                "score": "12w"
+            },
+            {
+                "uin": "28705435",
+                "score": "11w"
+            },
+            {
+                "uin": "287453164",
+                "score": "10.4w"
+            },
+            {
+                "uin": "3454926164",
+                "score": "10.2w"
+            },
+            {
+                "uin": "345926164",
+                "score": "6w"
+            }
+        ]
+
+        document.getElementById('time').innerText = getTime_format()
+        document.getElementById('uin1').innerText = data[0].uin
+        document.getElementById('uin2').innerText = data[1].uin
+        document.getElementById('uin3').innerText = data[2].uin
+        document.getElementById('uin4').innerText = data[3].uin
+        document.getElementById('uin5').innerText = data[4].uin
+        document.getElementById('score1').innerText = data[0].score
+        document.getElementById('score2').innerText = data[1].score
+        document.getElementById('score3').innerText = data[2].score
+        document.getElementById('score4').innerText = data[3].score
+        document.getElementById('score5').innerText = data[4].score
+    </script>
+
+    <style>
+        .time {
+            margin-top: 10px;
+            font-size: 12px;
+            margin-left: 60px;
+        }
+    </style>
+</body>
+
+</html>
